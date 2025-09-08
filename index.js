@@ -6,12 +6,16 @@ let rowThree = ['1','2','3','-']
 let rowFour = ['.','0','=','+']
 
 function createBtn(array){
+    const tempDiv = document.createElement('div')
+    tempDiv.classList.add('div')
 
     for(let i = 0; i <array.length; i++){
+        
         const button = document.createElement('button')
         button.classList.add('button')
         button.textContent = array[i]
-        div.appendChild(button)
+        tempDiv.appendChild(button)
+        div.appendChild(tempDiv)
     }
 
     

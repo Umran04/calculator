@@ -10,7 +10,7 @@ body{
 
 #calculator{
     width: 400px;
-    height: 550px;
+    height: 600px;
     border: solid black 1px;
     border-radius: 5px;
     display: flex;
@@ -47,10 +47,14 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 30px;
+    
 }
+
 
 .button{
     width: 75px;
     height: 75px;
     gap: 50px;
+    margin: 5px;
 }
+
