@@ -1,7 +1,7 @@
 const div = document.getElementById('grid')
 
-let rowOne = ['7','8','9','/']
-let rowTwo = ['4','5','6','X']
+let rowOne = ['7','8','9','÷']
+let rowTwo = ['4','5','6','×']
 let rowThree = ['1','2','3','-']
 let rowFour = ['.','0','=','+']
 
