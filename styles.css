@@ -27,3 +27,30 @@ body{
     border-radius: 5px;
 
 }
+
+#delete, #clear{
+    width: 150px;
+    height: 80px;
+    border: 1px solid orangered;
+}
+
+#btns{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 25px;
+}
+
+#grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button{
+    width: 75px;
+    height: 75px;
+    gap: 50px;
+}
