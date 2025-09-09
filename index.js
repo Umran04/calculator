@@ -1,5 +1,7 @@
 const div = document.getElementById('grid')
 const screen = document.getElementById('screen')
+const clearBtn = document.getElementById('clear')
+const deleteBtn = document.getElementById('delete')
 
 let rowOne = ['7','8','9','÷']
 let rowTwo = ['4','5','6','×']
@@ -23,19 +25,38 @@ function createBtn(array){
             if (button.textContent !== '𝑥²' && button.textContent !== '='){
                 screen.textContent += button.textContent
             }
+
+            if (button.textContent == '𝑥²'){
+                let num = parseInt(screen.textContent)
+                let result = square(num)
+                screen.textContent = result
+            }
             
         })
-        //TRY ADD SQR FUNCT FIRST
+        
+
         //ADD DIV MUL SUB FUNCS ASWELL
         //MAKE SURE IT FOLLOWS BIDMAS RULES
         //UNDERSTAND THE LOGIC WHEN '=' IS PRESSED
         //CHAIN THE METHODS -> E.G 2 + 2 = 4, + 5 = 9
-        //LOGIC FOR CLEAR AND DELETE BUTTONS
+        
 
 
         //PUT ALL LOGIC ABOVE THIS LINE
         div.appendChild(tempDiv)
     }
+}
+
+clearBtn.addEventListener('click', () => {
+    screen.textContent = ''
+})
+
+deleteBtn.addEventListener('click', () =>{
+
+})
+
+function square(n){
+    return n * n
 }
 
 
