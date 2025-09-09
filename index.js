@@ -23,14 +23,24 @@ function createBtn(array){
             if (button.textContent !== '𝑥²' && button.textContent !== '='){
                 screen.textContent += button.textContent
             }
+            
         })
-
+        //TRY ADD SQR FUNCT FIRST
+        //ADD DIV MUL SUB FUNCS ASWELL
+        //MAKE SURE IT FOLLOWS BIDMAS RULES
+        //UNDERSTAND THE LOGIC WHEN '=' IS PRESSED
+        //CHAIN THE METHODS -> E.G 2 + 2 = 4, + 5 = 9
+        //LOGIC FOR CLEAR AND DELETE BUTTONS
 
 
         //PUT ALL LOGIC ABOVE THIS LINE
         div.appendChild(tempDiv)
     }
 }
+
+
+
+
 
 createBtn(rowOne)
 createBtn(rowTwo)
