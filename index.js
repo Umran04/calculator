@@ -2,6 +2,8 @@ const div = document.getElementById('grid')
 const screen = document.getElementById('screen')
 const clearBtn = document.getElementById('clear')
 const deleteBtn = document.getElementById('delete')
+let tokens = []
+let currentNum = ''
 
 let rowOne = ['7','8','9','÷']
 let rowTwo = ['4','5','6','×']
@@ -31,18 +33,22 @@ function createBtn(array){
                 let result = square(num)
                 screen.textContent = result
             }
+
             
+            
+            
+            //ADD DIV MUL SUB FUNCS ASWELL
+            //MAKE SURE IT FOLLOWS BIDMAS RULES
+            //UNDERSTAND THE LOGIC WHEN '=' IS PRESSED
+            //CHAIN THE METHODS -> E.G 2 + 2 = 4, + 5 = 9
+            //PUT ALL LOGIC HERE I THINK
         })
         
 
-        //ADD DIV MUL SUB FUNCS ASWELL
-        //MAKE SURE IT FOLLOWS BIDMAS RULES
-        //UNDERSTAND THE LOGIC WHEN '=' IS PRESSED
-        //CHAIN THE METHODS -> E.G 2 + 2 = 4, + 5 = 9
         
 
 
-        //PUT ALL LOGIC ABOVE THIS LINE
+        
         div.appendChild(tempDiv)
     }
 }
@@ -59,8 +65,12 @@ function mul(a,b){
     return a * b
 }
 
-function div(a,b){
-    return a / b
+function divide(a,b){
+    if(a || b == 0){
+        screen.textContent = 'ERROR'
+    }else{
+        return a / b
+    }
 }
 
 clearBtn.addEventListener('click', () => {
