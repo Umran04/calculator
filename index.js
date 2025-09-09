@@ -16,15 +16,20 @@ function createBtn(array){
         button.classList.add('button')
         button.textContent = array[i]
         tempDiv.appendChild(button)
-        div.appendChild(tempDiv)
-
+        
+        
         button.addEventListener('click', () => {
-            screen.textContent = button.textContent
+            
+            if (button.textContent !== '𝑥²' && button.textContent !== '='){
+                screen.textContent += button.textContent
+            }
         })
+
+
+
+        //PUT ALL LOGIC ABOVE THIS LINE
+        div.appendChild(tempDiv)
     }
-
-    
-
 }
 
 createBtn(rowOne)
