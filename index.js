@@ -47,12 +47,32 @@ function createBtn(array){
     }
 }
 
+function add(a,b){
+    return a + b
+}
+
+function sub(a,b){
+    return a - b
+}
+
+function mul(a,b){
+    return a * b
+}
+
+function div(a,b){
+    return a / b
+}
+
 clearBtn.addEventListener('click', () => {
     screen.textContent = ''
 })
 
 deleteBtn.addEventListener('click', () =>{
-
+    let current = screen.textContent
+    if (current){
+        let newString = current.slice(0,-1)
+        screen.textContent = newString
+    }
 })
 
 function square(n){
