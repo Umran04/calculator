@@ -3,6 +3,9 @@ const screen = document.getElementById('screen')
 const clearBtn = document.getElementById('clear')
 const deleteBtn = document.getElementById('delete')
 let currentNum = ''
+let firstNum = ''
+let secondNum = ''
+let operator = ''
 
 let rowOne = ['7','8','9','÷']
 let rowTwo = ['4','5','6','×']
@@ -31,17 +34,28 @@ function createBtn(array){
 
             if (button.textContent == '𝑥²'){
                 let num = Number(screen.textContent)
-                let result = square(num)
+                let result = num * num
                 screen.textContent = result
             }
 
+            // if (button.textContent == '+' || button.textContent ==  '-' || button.textContent ==  '÷' || button.textContent ==  '×'){
+            //     if (firstNum == ''){
+            //         firstNum = currentNum
+            //         currentNum = ''
+            //     }else{
+            //         secondNum = currentNum
+            //         operator = button.textContent
+            //         let result = operate(operator, firstNum,secondNum)
+            //         firstNum = result
+            //         currentNum = ''
+            //         screen.textContent = firstNum
+            //     }
+            // }
             
             
             
             
-            //UNDERSTAND THE LOGIC WHEN '=' IS PRESSED
-            //CHAIN THE METHODS
-            //PUT ALL LOGIC HERE I THINK
+            
         })
         
 
@@ -85,6 +99,9 @@ function divide(a,b){
 
 clearBtn.addEventListener('click', () => {
     currentNum = ''
+    operator = ''
+    firstNum = ''
+    secondNum = ''
     screen.textContent = ''
 })
 
@@ -95,9 +112,7 @@ deleteBtn.addEventListener('click', () =>{
     }
 })
 
-function square(n){
-    return n * n
-}
+
 
 
 
