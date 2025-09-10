@@ -2,7 +2,6 @@ const div = document.getElementById('grid')
 const screen = document.getElementById('screen')
 const clearBtn = document.getElementById('clear')
 const deleteBtn = document.getElementById('delete')
-let tokens = []
 let currentNum = ''
 
 let rowOne = ['7','8','9','÷']
@@ -25,11 +24,13 @@ function createBtn(array){
         button.addEventListener('click', () => {
             
             if (button.textContent !== '𝑥²' && button.textContent !== '='){
-                screen.textContent += button.textContent
+                currentNum += button.textContent
+                screen.textContent = currentNum
+                
             }
 
             if (button.textContent == '𝑥²'){
-                let num = parseInt(screen.textContent)
+                let num = Number(screen.textContent)
                 let result = square(num)
                 screen.textContent = result
             }
@@ -37,10 +38,9 @@ function createBtn(array){
             
             
             
-            //ADD DIV MUL SUB FUNCS ASWELL
-            //MAKE SURE IT FOLLOWS BIDMAS RULES
+            
             //UNDERSTAND THE LOGIC WHEN '=' IS PRESSED
-            //CHAIN THE METHODS -> E.G 2 + 2 = 4, + 5 = 9
+            //CHAIN THE METHODS
             //PUT ALL LOGIC HERE I THINK
         })
         
@@ -51,6 +51,20 @@ function createBtn(array){
         
         div.appendChild(tempDiv)
     }
+}
+
+function operate (operator, firstNum, secondNum){
+
+    if(operator == '+'){
+        return add(firstNum,secondNum)
+    }else if(operator == '-'){
+        return sub(firstNum,secondNum)
+    }else if (operator == '×'){
+        return mul(firstNum,secondNum)
+    }else {
+        return divide(firstNum,secondNum)
+    }
+
 }
 
 function add(a,b){
@@ -66,22 +80,18 @@ function mul(a,b){
 }
 
 function divide(a,b){
-    if(a || b == 0){
-        screen.textContent = 'ERROR'
-    }else{
-        return a / b
-    }
+    return a / b
 }
 
 clearBtn.addEventListener('click', () => {
+    currentNum = ''
     screen.textContent = ''
 })
 
 deleteBtn.addEventListener('click', () =>{
-    let current = screen.textContent
-    if (current){
-        let newString = current.slice(0,-1)
-        screen.textContent = newString
+    if (currentNum){
+        currentNum = currentNum.slice(0,-1)
+        screen.textContent = currentNum
     }
 })
 
