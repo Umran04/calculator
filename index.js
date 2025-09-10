@@ -27,49 +27,53 @@ function createBtn(array){
         
         button.addEventListener('click', () => {
             
-            if (button.textContent !== '𝑥²' && button.textContent !== '='){
+            if (!isNaN(button.textContent)) {
                 currentNum += button.textContent
                 displayExpr += button.textContent
                 screen.textContent = displayExpr
-                
-            }else if ((button.textContent == '+') ||
-                      (button.textContent ==  '-') || 
-                      (button.textContent ==  '÷') || 
-                      (button.textContent ==  '×')){
-                    if (firstNum == ''){
-                        firstNum = currentNum
-                        currentNum = ''
-                        
-                    }else{
-                        secondNum = currentNum
-                        firstNum = operate(operator, firstNum, secondNum)
-                        
-                    }
-
-                    operator = button.textContent
+            }
+        
+            
+            else if (['+','-','×','÷'].includes(button.textContent)) {
+                if (firstNum === '') {
+                    firstNum = Number(currentNum)
                     currentNum = ''
-                    displayExpr += ' ' + operator + ' '
-                    screen.textContent = displayExpr
-
-            } else if (button.textContent == '=') {
-                secondNum = currentNum
+                } else {
+                    secondNum = Number(currentNum)
+                    firstNum = operate(operator, firstNum, secondNum)
+                }
+        
+                operator = button.textContent
+                currentNum = ''
+                displayExpr += ' ' + operator + ' '
+                screen.textContent = displayExpr
+            }
+        
+            
+            else if (button.textContent === '=') {
+                secondNum = Number(currentNum)
                 let result = operate(operator, firstNum, secondNum)
                 screen.textContent = result
                 firstNum = result
                 currentNum = ''
                 secondNum = ''
                 operator = ''
-                displayExpr = result // reset expression to just the result
+                displayExpr = result.toString()
             }
-
-            if (button.textContent == '𝑥²'){
+        
+            
+            else if (button.textContent === '𝑥²') {
                 let num = Number(screen.textContent)
                 let result = num * num
                 screen.textContent = result
+                firstNum = result
+                currentNum = ''
+                secondNum = ''
+                operator = ''
+                displayExpr = result.toString()
             }
-
-            
         })
+        
         
 
         
@@ -88,8 +92,10 @@ function operate (operator, firstNum, secondNum){
         return sub(firstNum,secondNum)
     }else if (operator == '×'){
         return mul(firstNum,secondNum)
-    }else {
+    }else if(operator == '÷'){
         return divide(firstNum,secondNum)
+    }else{
+        return NaN
     }
 
 }
