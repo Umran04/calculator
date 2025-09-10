@@ -8,7 +8,7 @@ let secondNum = ''
 let operator = ''
 let displayExpr = ''
 
-let rowOne = ['7','8','9','÷']
+let rowOne = ['7','8','9','÷'] 
 let rowTwo = ['4','5','6','×']
 let rowThree = ['1','2','3','-']
 let rowFour = ['𝑥²','0','=','+']
@@ -29,8 +29,37 @@ function createBtn(array){
             
             if (button.textContent !== '𝑥²' && button.textContent !== '='){
                 currentNum += button.textContent
-                screen.textContent = currentNum
+                displayExpr += button.textContent
+                screen.textContent = displayExpr
                 
+            }else if ((button.textContent == '+') ||
+                      (button.textContent ==  '-') || 
+                      (button.textContent ==  '÷') || 
+                      (button.textContent ==  '×')){
+                    if (firstNum == ''){
+                        firstNum = currentNum
+                        currentNum = ''
+                        
+                    }else{
+                        secondNum = currentNum
+                        firstNum = operate(operator, firstNum, secondNum)
+                        
+                    }
+
+                    operator = button.textContent
+                    currentNum = ''
+                    displayExpr += ' ' + operator + ' '
+                    screen.textContent = displayExpr
+
+            } else if (button.textContent == '=') {
+                secondNum = currentNum
+                let result = operate(operator, firstNum, secondNum)
+                screen.textContent = result
+                firstNum = result
+                currentNum = ''
+                secondNum = ''
+                operator = ''
+                displayExpr = result // reset expression to just the result
             }
 
             if (button.textContent == '𝑥²'){
@@ -39,24 +68,6 @@ function createBtn(array){
                 screen.textContent = result
             }
 
-            // if (button.textContent == '+' || button.textContent ==  '-' || button.textContent ==  '÷' || button.textContent ==  '×'){
-            //     if (firstNum == ''){
-            //         firstNum = currentNum
-            //         currentNum = ''
-            //         operator = button.textContent
-            //     }else{
-            //         secondNum = currentNum
-            //         let result = operate(operator, firstNum,secondNum)
-            //         firstNum = result
-            //         currentNum = ''
-            //         screen.textContent = firstNum
-            //         operator = button.textContent
-            //     }
-            // }
-            
-            
-            
-            
             
         })
         
@@ -104,7 +115,8 @@ clearBtn.addEventListener('click', () => {
     operator = ''
     firstNum = ''
     secondNum = ''
-    screen.textContent = ''
+    displayExpr = ''
+    screen.textContent = displayExpr
 })
 
 deleteBtn.addEventListener('click', () =>{
