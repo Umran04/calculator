@@ -6,6 +6,7 @@ let currentNum = ''
 let firstNum = ''
 let secondNum = ''
 let operator = ''
+let displayExpr = ''
 
 let rowOne = ['7','8','9','÷']
 let rowTwo = ['4','5','6','×']
@@ -42,13 +43,14 @@ function createBtn(array){
             //     if (firstNum == ''){
             //         firstNum = currentNum
             //         currentNum = ''
+            //         operator = button.textContent
             //     }else{
             //         secondNum = currentNum
-            //         operator = button.textContent
             //         let result = operate(operator, firstNum,secondNum)
             //         firstNum = result
             //         currentNum = ''
             //         screen.textContent = firstNum
+            //         operator = button.textContent
             //     }
             // }
             
